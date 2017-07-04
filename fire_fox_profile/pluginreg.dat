@@ -1,0 +1,30 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version:0.18t:$
+Arch:x86_64-gcc3:$
+
+[PLUGINS]
+libflashplayer.so:$
+/usr/lib/adobe-flashplugin/libflashplayer.so:$
+26.0.0.131:$
+1497483975000:0:0:0:$
+Shockwave Flash 26.0 r0:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
+
+[INVALID]
+/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so:$
+1460836855000:$
+/usr/lib/mozilla/plugins/libxplayer-narrowspace-plugin.so:$
+1481550995000:$
+/usr/lib/mozilla/plugins/libxplayer-gmp-plugin.so:$
+1481550995000:$
+/usr/lib/mozilla/plugins/libxplayer-mully-plugin.so:$
+1481550995000:$
+/usr/lib/mozilla/plugins/libxplayer-cone-plugin.so:$
+1481550995000:$
+/usr/lib/pipelight/libpipelight-silverlight5.1.so:$
+1496528343000:$

@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#Firefox Browser history and other sensitive files
+*cookies.sqlite
+*formhistory.sqlite
+*key3.db
+*login.json
+*places.sqlite
+*sessionstore.js
+*cert8.db
