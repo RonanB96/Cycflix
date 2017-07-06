@@ -4,11 +4,14 @@
     asks the user to input details for a Spinning workout and once the user chooses something to 
     watch, the workout starts. The PC is connected to an arduino reading in the speed from an stationary
     exercise bike, if the speed goes too low, Netflix will be paused until they return to that speed
-    Written By Ronan Byrne, last updated 03/07/2017
+    Written By Ronan Byrne, last updated 06/07/2017
+    Blog: https://roboroblog.wordpress.com/
+    Instructables Post:
+    
 '''
 
 #!/usr/bin/env python
-import time, pyautogui, serial
+import time, serial
 import serial.tools.list_ports as list_ports
 from tkinter import *
 from selenium import webdriver as wd
@@ -17,10 +20,13 @@ from selenium.webdriver.common.keys import Keys
 
 # If the X button is pressed, exit application
 def window_exit():
+    global driver, win, ser
     if driver:
         driver.quit()
     if win:
         win.destroy()
+    if ser:
+        ser.close()
     exit()
 
 # Function for getting exercise info
@@ -180,7 +186,7 @@ def serial_port():
 
 # Wait for Arduino to respond
 def serial_wait():
-    global win
+    global win, ser
     win = Tk()
     win.title("Waiting for Arduino")
     l1 = Label(win, text="Waiting For Arduino to establish connection")
@@ -203,6 +209,8 @@ def serial_wait():
 
 port = None
 driver = None
+win = None
+ser = None
 serial_port()   # Opens window with Serial ports
 serial_wait()   # Wait for Arduino to respond
 print('Starting Firefox, it could take a minute to start')
@@ -245,7 +253,7 @@ delay = 0.5
 
 # Open window in top left with workout info
 win = Tk()
-win.geometry("200x50+0+0")
+win.geometry("200x65+0+0")
 Round = StringVar(win)
 display_time = StringVar(win)
 display_speed = StringVar(win)

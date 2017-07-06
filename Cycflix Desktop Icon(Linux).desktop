@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Cycflix
+Exec=python3 PATH-TO-CYCFLIX-FOLDER/Cycflix/Cycflix.py
+Type=Application
+Name[en_IE]=Cycflix Desktop Icon(Linux)

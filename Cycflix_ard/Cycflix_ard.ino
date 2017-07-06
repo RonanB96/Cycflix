@@ -8,6 +8,8 @@
  * be paused.
  * Create By Ronan Byrne,
  * Last Updated 03/07/2017
+ * Blog: https://roboroblog.wordpress.com/
+ * Instructables Post: 
  */
 
 volatile unsigned long temp_time = 0; // Temperarally save current time
