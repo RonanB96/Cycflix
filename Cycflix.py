@@ -4,9 +4,10 @@
     asks the user to input details for a Spinning workout and once the user chooses something to 
     watch, the workout starts. The PC is connected to an arduino reading in the speed from an stationary
     exercise bike, if the speed goes too low, Netflix will be paused until they return to that speed
-    Written By Ronan Byrne, last updated 06/07/2017
+    Written By Ronan Byrne, last updated 08/07/2017
     Blog: https://roboroblog.wordpress.com/
-    Instructables Post:
+    Instructables Post: https://www.instructables.com/id/Cycflix-Exercise-Powered-Entertainment/
+    Youtube Video: https://youtu.be/-nc0irLB-iY
     
 '''
 
@@ -61,11 +62,11 @@ def exercise_info():
     e4.grid(row=4, column=2)
     Label(text="Working Nominal Speed(Km)").grid(row=5, column=1)
     e5 = Entry(bd=5)
-    e5.insert(END,30)
+    e5.insert(END,40)
     e5.grid(row=5, column=2)
     Label(text="Resting Nominal Speed(Km)").grid(row=6, column=1)
     e6 = Entry(bd=5)
-    e6.insert(END, 15)
+    e6.insert(END, 20)
     e6.grid(row=6, column=2)
     Button(win, text="OK", command=button_press).grid(row=7, column=1, columnspan=2)
     e1.focus_set()
@@ -198,8 +199,8 @@ def serial_wait():
             reciev = ser.readline()
             reciev = reciev.decode("utf-8")
             if reciev == 'B\r\n':
-                ser.flush()
                 ser.write(1)
+                ser.reset_input_buffer()
                 print('recieved B')
                 win.destroy()
                 break
@@ -249,6 +250,7 @@ time_to_event = work_time
 time_left = work_time
 sets = sets-1
 nom_speed = work_nom_speed
+speed = 0
 delay = 0.5
 
 # Open window in top left with workout info
@@ -275,10 +277,11 @@ win.update_idletasks()
 win.update()
 
 time_last_event = time.time()
+ser.reset_input_buffer()
 while working_out:
     # Read in latest speed
     if ser.in_waiting > 0:
-        speed =float(ser.readline().decode("utf-8"))
+        speed = float(ser.readline().decode("utc-8"))
         display_speed.set("Current Speed is %0.2f Km" % speed)
     Round.set(case)
     print("speed %.02f, nom speed %.02f, time left %d, round %s" %(speed,nom_speed, int(time_left), case))
@@ -297,6 +300,9 @@ while working_out:
                     pop_up("Cycling Too Slow", "Netflix will pause if you don't get back up to speed, %.02fKm" % nom_speed, 5)
                 # Stop Netflix
                 else:
+                    # Pressing Space once is unreliable
+                    actions.send_keys(Keys.SPACE)
+                    actions.perform()
                     actions.send_keys(Keys.SPACE)
                     actions.perform()
                     pop_up("Cycling Too Slow For Too Long",
@@ -332,13 +338,15 @@ while working_out:
     elif case == "Paused":
         if speed >= nom_speed:
             count = count + 1
-            # Unpause Netflix after 10 delays
-            if count == 10:
+            # Unpause Netflix after 20 delays
+            if count == 20:
+                actions.send_keys(Keys.SPACE)
+                actions.perform()
                 actions.send_keys(Keys.SPACE)
                 actions.perform()
                 count = 0
+                time_to_event = time_left
                 time_last_event = time.time()
-                time_next_event = time_left+time_last_event
                 case = old_case
     elif case == "Done":
         pop_up("You're Done!", "Congratulations, you're finished you're workout!", 5)

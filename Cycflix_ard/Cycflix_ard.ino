@@ -7,9 +7,10 @@
  * script which controls netflix, the the speed is too slow, netflix will
  * be paused.
  * Create By Ronan Byrne,
- * Last Updated 03/07/2017
+ * Last Updated 08/07/2017
  * Blog: https://roboroblog.wordpress.com/
- * Instructables Post: 
+ * Instructables Post: https://www.instructables.com/id/Cycflix-Exercise-Powered-Entertainment/ 
+ * Youtube Video: https://youtu.be/-nc0irLB-iY
  */
 
 volatile unsigned long temp_time = 0; // Temperarally save current time
@@ -63,6 +64,7 @@ void loop()
     time1 = temp_time;
     voltage_low = 0;
     Speed = time_d*-0.0384+60.372;
+    count = 0;
   }
   // Check for falling edge
   else if (!voltage_low && (voltage_b < 30))

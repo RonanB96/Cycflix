@@ -44,8 +44,8 @@ Ronan Byrne
 ## Other Projects
 
 Visit 
-   my Blog: 		https://roboroblog.wordpress.com/
-   my Instructables :   https://www.instructables.com/member/Roboro/
-   my Youtube:		https://www.youtube.com/channel/UCw_9mmtSWJA1FVi-CpD1Fvw
+   my Blog: 		    https://roboroblog.wordpress.com/
+   my Instructables Post:   https://www.instructables.com/id/Cycflix-Exercise-Powered-Entertainment/
+   my Youtube:		    https://youtu.be/-nc0irLB-iY
 
 
