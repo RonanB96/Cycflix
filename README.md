@@ -3,7 +3,7 @@
 ## About
 
 This project uses an Arduino connected to a stationary exercise bike to control Netflix. Starting the python script
-and inputting some information, Firefox will start to stream Netflix and display in realtime for current workout information such as round, speed, nominal speed for this round and time to next round. If the user goes below the nominal speed for two long, Netflix will pause until the user has gotten back up to speed.
+and inputting some information, Firefox will start to stream Netflix and display in realtime for current workout information such as round, speed, nominal speed for this round and time to next round. If the user goes below the nominal speed for too long, Netflix will pause until the user has gotten back up to speed.
 
 ## Instructions
 
